@@ -130,8 +130,8 @@ class HTTPHeaders(collections.MutableMapping):
     Set-Cookie: C=D
     """
     def __init__(self, *args, **kwargs):
-        self._dict = {}  # type: typing.Dict[str, str]
-        self._as_list = {}  # type: typing.Dict[str, typing.List[str]]
+        self._dict = collections.OrderedDict()  # type: typing.Dict[str, str]
+        self._as_list = collections.OrderedDict()  # type: typing.Dict[str, typing.List[str]]
         self._last_key = None
         if (len(args) == 1 and len(kwargs) == 0 and
                 isinstance(args[0], HTTPHeaders)):
